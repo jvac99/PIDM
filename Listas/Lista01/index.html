@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>ATIVIDADE 1 - RETROSPECTIVA JAVASCRIPT</h1>
+    <h2>João Victor Aquino Correia</h2>
+
+    O IMC é:
+    <p id="imc"></p>
+
+    Sua média é:
+    <p id="media"></p>
+
+    Reprovados:
+    <p id="demo"></p>
+
+    <script>
+      function imc(peso, altura) {
+        return (peso / altura ** 2).toFixed(2);
+      }
+      document.getElementById("imc").innerHTML = imc(90, 1.8);
+
+      function situacaoAluno(np1, np2) {
+        let media = (np1 + np2) / 2;
+        if (media >= 7) {
+          return "Aprovado com Conceito A";
+        } else if (media < 4) {
+          return "Reprovado Direto";
+        } else {
+          let nfinal = 4;
+          media = (media + nfinal) / 2;
+          if (media < 5) {
+            return "Reprovado na Final";
+          }
+
+          return "Aprovado com Conceito B";
+        }
+      }
+      document.getElementById("media").innerHTML = situacaoAluno(10, 5);
+
+      const alunos = [
+        { nome: "Leandro", ira: 7.5 },
+        { nome: "Maria", ira: 8.2 },
+        { nome: "José", ira: 4.5 },
+        { nome: "Diana", ira: 5.4 },
+        { nome: "Bruna", ira: 6.7 },
+      ];
+
+      function reprovados(alunos) {
+        let res = "<ul>";
+
+        for (let i = 0; i < alunos.length; i++) {
+          if (alunos[i].ira < 7) {
+            let { nome, ira } = alunos[i];
+            res += "<li> Nome: " + nome + ", ira: " + ira + "</li>";
+          }
+        }
+
+        res += "</ul>";
+
+        return res;
+      }
+      document.getElementById("demo").innerHTML = reprovados(alunos);
+    </script>
+  </body>
+</html>
