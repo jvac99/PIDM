@@ -1,34 +1,21 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { SafeAreaView, StyleSheet } from "react-native";
 
-// You can import from local files
-import Estudante from './components/Estudante';
-import Estudante2 from './components/Estudante2';
+import BotaoPegaTexto from "./components/BotaoPegaTexto";
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-     <Text style={styles.paragraph}>Estudantes
-      </Text>
-    <Estudante/>
-    <Estudante2/>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <BotaoPegaTexto />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  paragraph: {
-    margin: 20,
-    fontSize: 32,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    },
 });
+
+export default App;
