@@ -1,11 +1,11 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 
-import BotaoPegaTexto from "./components/BotaoPegaTexto";
+import CadastrarEstudante from "./components/CadastrarEstudante";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <BotaoPegaTexto />
+      <CadastrarEstudante />
     </SafeAreaView>
   );
 };

@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 import Title from "./src/components/Title";
-import Main from "./src/components/Main";
+import Form from "./src/components/Form";
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Title />
-      <Main />
-    </View>
+      <Form />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -18,5 +18,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 16,
   },
 });
+
+export default App;

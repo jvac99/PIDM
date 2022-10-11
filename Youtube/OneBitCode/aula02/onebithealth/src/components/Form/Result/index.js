@@ -1,11 +1,13 @@
-import React from "react";
 import { View, Text } from "react-native";
 
-export default function Result({ result, messageResult }) {
+const Result = ({ result, message, imcClass }) => {
   return (
     <View>
-      <Text>{messageResult}</Text>
+      <Text>{message}</Text>
       <Text>{result}</Text>
+      <Text>{imcClass}</Text>
     </View>
   );
-}
+};
+
+export default Result;
