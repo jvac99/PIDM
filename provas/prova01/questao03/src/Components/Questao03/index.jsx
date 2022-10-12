@@ -26,16 +26,14 @@ const Questao03 = () => {
   );
 
   return (
-    <>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton} onPress={() => setProx(prox + 1)}>
-            Prox
-          </Text>
-        </TouchableOpacity>
-        <FlatList data={values} renderItem={renderItem} />
-      </View>
-    </>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.textButton} onPress={() => setProx(prox + 1)}>
+          Prox
+        </Text>
+      </TouchableOpacity>
+      <FlatList data={values} renderItem={renderItem} />
+    </View>
   );
 };
 

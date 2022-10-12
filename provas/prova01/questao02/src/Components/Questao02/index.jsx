@@ -8,7 +8,7 @@ const Questao02 = () => {
   const [result, setResult] = useState();
 
   const sum = () => {
-    if (numberOne != NaN && numberTwo != NaN) {
+    if (numberOne != null && numberTwo != null) {
       let num1 = parseFloat(numberOne);
       let num2 = parseFloat(numberTwo);
       setResult(num1 + num2);
@@ -20,7 +20,7 @@ const Questao02 = () => {
   };
 
   const sub = () => {
-    if (numberOne != NaN && numberTwo != NaN) {
+    if (numberOne != null && numberTwo != null) {
       let num1 = parseFloat(numberOne);
       let num2 = parseFloat(numberTwo);
       setResult(num1 - num2);
@@ -32,7 +32,7 @@ const Questao02 = () => {
   };
 
   const mult = () => {
-    if (numberOne != NaN && numberTwo != NaN) {
+    if (numberOne != null && numberTwo != null) {
       let num1 = parseFloat(numberOne);
       let num2 = parseFloat(numberTwo);
       setResult(num1 * num2);
@@ -44,7 +44,7 @@ const Questao02 = () => {
   };
 
   const div = () => {
-    if (numberOne != NaN && numberTwo != NaN) {
+    if (numberOne != null && numberTwo != null) {
       let num1 = parseFloat(numberOne);
       let num2 = parseFloat(numberTwo);
       if (num2 == 0) {

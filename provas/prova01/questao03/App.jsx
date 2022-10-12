@@ -1,20 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import Questao01 from "./src/Components/Questao01";
-import Questao01A from "./src/Components/Questao01/Questao01A";
-import Questao01B from "./src/Components/Questao01/Questao01B";
-import Questao02 from "./src/Components/Questao02";
 import Questao03 from "./src/Components/Questao03";
-import Questao04 from "./src/Components/Questao04";
-import Questao05 from "./src/Components/Questao05";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <View>
-        <Text style={styles.question}>Questao0</Text>
-        <Questao05 />
+      <View style={styles.container}>
+        <View style={styles.title}>
+          <Text style={styles.question}>Questao03</Text>
+        </View>
+        <Text style={styles.author}>João Victor Aquino Correia</Text>
+        <Questao03 />
       </View>
     </SafeAreaView>
   );
@@ -24,13 +21,21 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 30,
     height: "100%",
+    width: "100%",
+    backgroundColor: "#fff",
+  },
+  title: {
+    marginBottom: 20,
+    alignItems: "center",
+    textAlign: "center",
   },
   question: {
+    fontWeight: "bold",
+  },
+  author: {
+    margin: 10,
     fontWeight: "bold",
   },
 });

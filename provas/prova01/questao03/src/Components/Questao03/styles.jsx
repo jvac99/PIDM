@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   textButton: {
     textAlign: "center",
+    color: "#0088ff",
   },
   item: {
     flex: 2,

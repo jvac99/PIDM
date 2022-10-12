@@ -18,7 +18,6 @@ const Questao05 = () => {
           value = data_[i].population;
           pais = data_[i];
         }
-        console.log(value);
       }
     } else {
       pais = data_[0];
@@ -45,13 +44,13 @@ const Questao05 = () => {
     if (prox == "asia" || prox == "africa") {
       return (
         <View>
-          <Text>Maior país: {resp}</Text>
+          <Text style={styles.title}>Maior país:{" " + resp}</Text>
         </View>
       );
     }
     return (
       <View>
-        <Text>Menor país:{resp}</Text>
+        <Text style={styles.title}>Menor país:{" " + resp}</Text>
       </View>
     );
   };
@@ -59,7 +58,6 @@ const Questao05 = () => {
   useEffect(() => {
     fetch(`https://restcountries.com/v2/region/${prox}?fields=name,population`)
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((data_) => {
@@ -73,25 +71,24 @@ const Questao05 = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text>{item.name}</Text>
-      <Text>{item.population}</Text>
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.population}>{item.population}</Text>
     </View>
   );
 
   return (
     <View>
-      <Text>Questao03</Text>
+      {result()}
       <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton} onPress={americas}>
-          Americas
+          América
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton} onPress={asia}>
-          Asia
+          Asía
         </Text>
       </TouchableOpacity>
-      {result()}
       <FlatList data={values} renderItem={renderItem} />
     </View>
   );

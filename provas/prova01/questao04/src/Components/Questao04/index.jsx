@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { styles } from "./styles";
 
 const Questao04 = () => {
-  const [prox, setProx] = useState("africa");
   const [values, setValues] = useState([]);
   const [resp, setResp] = useState();
 
@@ -22,15 +21,14 @@ const Questao04 = () => {
   const result = () => {
     return (
       <View>
-        <Text>Maior país: {resp}</Text>
+        <Text style={styles.title}>Maior país: {resp}</Text>
       </View>
     );
   };
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v2/region/${prox}?fields=name,population`)
+    fetch("https://restcountries.com/v2/region/africa?fields=name,population")
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((data_) => {
@@ -40,18 +38,17 @@ const Questao04 = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [prox]);
+  });
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text>{item.name}</Text>
-      <Text>{item.population}</Text>
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.population}>{item.population}</Text>
     </View>
   );
 
   return (
     <View>
-      <Text>Questao03</Text>
       {result()}
       <FlatList data={values} renderItem={renderItem} />
     </View>
