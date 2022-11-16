@@ -65,7 +65,7 @@ const ListarProfessor = (props) => {
                   {item.nome}
                 </Text>
                 <Text style={{ width: "25%" }}>{item.curso}</Text>
-                <Text style={{ margin: 5 }}>{item.ira}</Text>
+                <Text style={{ margin: 5 }}>{item.salario}</Text>
                 <View style={{ margin: 5 }}>
                   <Button
                     title="Editar"

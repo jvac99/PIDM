@@ -7,7 +7,7 @@ import {
   updateDoc,
   deleteDoc,
   query,
-} from "firebase/firestore/lite";
+} from "firebase/firestore";
 
 import { onSnapshot } from "firebase/firestore";
 
