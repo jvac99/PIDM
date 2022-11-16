@@ -2,42 +2,41 @@ import { useEffect, useState } from "react";
 import { View, Text, Button, TextInput } from "react-native";
 import { estilos } from "../css/MeuCSS";
 
-import EstudanteService from "../service/EstudanteService";
+import ProfessorService from "../service/ProfessorService";
 import { firestoreDb } from "../firebase/firebase_config";
 
-const EditarEstudante = (props) => {
+const EditarProfessor = (props) => {
   const [nome, setNome] = useState("");
   const [curso, setCurso] = useState("");
-  const [ira, setIra] = useState("");
+  const [salario, setSalario] = useState("");
 
   useEffect(() => {
-    EstudanteService.recuperar(
+    ProfessorService.recuperar(
       firestoreDb,
-      (estudante) => {
-        //console.log(estudante)
-        setNome(estudante.nome);
-        setCurso(estudante.curso);
-        setIra(estudante.ira);
+      (professor) => {
+        setNome(professor.nome);
+        setCurso(professor.curso);
+        setSalario(professor.salario);
       },
       props.route.params.id
     );
   }, []);
 
   const acaoBotaoSubmeter = () => {
-    EstudanteService.atualizar(
+    ProfessorService.atualizar(
       firestoreDb,
       () => {
-        alert("Estudante atualizado!");
-        props.navigation.navigate("ListarEstudante");
+        alert("Professor atualizado!");
+        props.navigation.navigate("ListarProfessor");
       },
       props.route.params.id,
-      { nome, curso, ira }
+      { nome, curso, salario }
     );
   };
 
   return (
     <View style={estilos.container}>
-      <Text style={estilos.cabecalho}>Editar Estudante</Text>
+      <Text style={estilos.cabecalho}>Editar Professor</Text>
       <TextInput
         style={estilos.input}
         placeholder="Nome"
@@ -52,10 +51,10 @@ const EditarEstudante = (props) => {
       />
       <TextInput
         style={estilos.input}
-        placeholder="IRA"
-        value={ira}
+        placeholder="Salário"
+        value={salario}
         keyboardType="numeric"
-        onChangeText={(ira) => setIra(ira)}
+        onChangeText={(salario) => setSalario(salario)}
       />
       <View style={estilos.botao}>
         <Button title="ATUALIZAR" onPress={acaoBotaoSubmeter} />
@@ -64,4 +63,4 @@ const EditarEstudante = (props) => {
   );
 };
 
-export default EditarEstudante;
+export default EditarProfessor;

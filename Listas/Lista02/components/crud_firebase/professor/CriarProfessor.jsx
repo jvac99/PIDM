@@ -2,28 +2,28 @@ import { useState } from "react";
 import { View, Text, Button, TextInput } from "react-native";
 import { estilos } from "../css/MeuCSS";
 
-import EstudanteService from "../service/EstudanteService";
+import ProfessorService from "../service/ProfessorService";
 import { firestoreDb } from "../firebase/firebase_config";
 
-const CriarEstudante = (props) => {
+const CriarProfessor = (props) => {
   const [nome, setNome] = useState("");
   const [curso, setCurso] = useState("");
-  const [ira, setIra] = useState("");
+  const [salario, setSalario] = useState("");
 
   const acaoBotaoSubmeter = () => {
-    EstudanteService.criar(
+    ProfessorService.criar(
       firestoreDb,
       (id) => {
-        alert(`Estudante ${id} inserido!`);
-        props.navigation.navigate("ListarEstudante");
+        alert(`Professor ${id} inserido!`);
+        props.navigation.navigate("ListarProfessor");
       },
-      { nome, curso, ira }
+      { nome, curso, salario }
     );
   };
 
   return (
     <View style={estilos.container}>
-      <Text style={estilos.cabecalho}>Criar Estudante</Text>
+      <Text style={estilos.cabecalho}>Criar Professor</Text>
       <TextInput
         style={estilos.input}
         placeholder="Nome"
@@ -38,10 +38,10 @@ const CriarEstudante = (props) => {
       />
       <TextInput
         style={estilos.input}
-        placeholder="IRA"
-        value={ira}
+        placeholder="Salário"
+        value={salario}
         keyboardType="numeric"
-        onChangeText={(ira) => setIra(ira)}
+        onChangeText={(salario) => setSalario(salario)}
       />
       <View style={estilos.botao}>
         <Button title="SUBMETER" onPress={acaoBotaoSubmeter} />
@@ -50,4 +50,4 @@ const CriarEstudante = (props) => {
   );
 };
 
-export default CriarEstudante;
+export default CriarProfessor;

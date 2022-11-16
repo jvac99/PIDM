@@ -2,45 +2,45 @@ import { View, Text, SafeAreaView, FlatList, Button } from "react-native";
 import { useEffect, useState } from "react";
 import { estilos } from "../css/MeuCSS";
 
-import EstudanteService from "../service/EstudanteService";
+import ProfessorService from "../service/ProfessorService";
 import { firestoreDb } from "../firebase/firebase_config";
 
-const ListarEstudante = (props) => {
-  const [estudantes, setEstudantes] = useState([]);
+const ListarProfessor = (props) => {
+  const [professores, setProfessores] = useState([]);
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
-    EstudanteService.listar(firestoreDb, (estudantes) => {
-      setEstudantes(estudantes);
+    ProfessorService.listar(firestoreDb, (professores) => {
+      setProfessores(professores);
     });
   }, []);
 
-  const apagarEstudanteV2 = (id) => {
-    EstudanteService.apagar(
+  const apagarProfessorV2 = (id) => {
+    ProfessorService.apagar(
       firestoreDb,
       (resultado) => {
-        let estudantesTemp = estudantes;
-        for (let i = 0; i < estudantesTemp.length; i++) {
-          if (estudantesTemp[i].id === id) {
-            estudantesTemp.splice(i, 1);
+        let professoresTemp = professores;
+        for (let i = 0; i < professoresTemp.length; i++) {
+          if (professoresTemp[i].id === id) {
+            professoresTemp.splice(i, 1);
             break;
           }
         }
-        setEstudantes(estudantesTemp);
+        setProfessores(professoresTemp);
         setFlag(!flag);
       },
       id
     );
   };
 
-  const apagarEstudante = (id) => {
-    EstudanteService.apagar(
+  const apagarProfessor = (id) => {
+    ProfessorService.apagar(
       firestoreDb,
       (resultado) => {
-        let estudantesResultado = estudantes.filter(
-          (estudante) => estudante.id !== id
+        let professorResultado = professores.filter(
+          (Professor) => Professor.id !== id
         );
-        setEstudantes(estudantesResultado);
+        setProfessores(professorResultado);
       },
       id
     );
@@ -48,11 +48,11 @@ const ListarEstudante = (props) => {
 
   return (
     <View style={estilos.container}>
-      <Text style={estilos.cabecalho}>Listar Estudantes</Text>
-      {console.log(estudantes)}
+      <Text style={estilos.cabecalho}>Listar Professors</Text>
+      {console.log(professores)}
       <SafeAreaView>
         <FlatList
-          data={estudantes}
+          data={professores}
           renderItem={({ item }) => {
             return (
               <View
@@ -70,7 +70,7 @@ const ListarEstudante = (props) => {
                   <Button
                     title="Editar"
                     onPress={() =>
-                      props.navigation.navigate("EditarEstudante", {
+                      props.navigation.navigate("EditarProfessor", {
                         id: item.id,
                       })
                     }
@@ -79,7 +79,7 @@ const ListarEstudante = (props) => {
                 <View style={{ margin: 5 }}>
                   <Button
                     title="Apagar"
-                    onPress={() => apagarEstudanteV2(item.id)}
+                    onPress={() => apagarProfessorV2(item.id)}
                   />
                 </View>
               </View>
@@ -92,4 +92,4 @@ const ListarEstudante = (props) => {
   );
 };
 
-export default ListarEstudante;
+export default ListarProfessor;
