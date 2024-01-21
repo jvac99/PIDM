@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 
-import Title from "./src/components/Title";
 import Form from "./src/components/Form";
+import Title from "./src/components/Title";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 16,
+    paddingHorizontal: 50,
   },
 });
 
